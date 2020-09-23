@@ -2,21 +2,40 @@
 using namespace std;
 
 int main(){
+    int x,k;
+    cin>>x>>k;
+    int a[1000];
+    bool dp[1000][1000];
+    int c[1000];
 
-int x;
-cin>>x;
-int a[1000],b[1000];
+    for(int i=1;i<=x;i++)
+    {
+        cin>>a[i];
+    }
+    for(int i=1;i<=k;i++)
+    {
 
+        for(int j=1;j<=x;j++)
+            dp[i][j]=false;
+        c[i]=9999999;
+    }
+    for (int i=1;i<=k;i++)
+    {
+        for (int j=1;j<=x;j++)
+        {
+            if(a[j]==i || dp[i-a[j]][j-1]==true || dp[i][j-1]==true )
+            {
+                dp[i][j]=true;
+                c[i]=min(j,c[i]);
 
-for(int i=0;i<x;i++)
-cin>>a[i];
-b[0]=a[0];
-b[1]=a[1];
-for(int i=2;i<x;i++)
-{
-
-    b[i]=min(b[i-2],b[i-1])+a[i];
-
-}
-cout<<min(b[x-1],b[x-2]);
+            }
+        }
+    }
+    int tong = k;
+    while (tong>0)
+    {
+        cout<<a[c[tong]]<<" ";
+        tong-=a[c[tong]];
+    }
+    cout<<endl;
 }
