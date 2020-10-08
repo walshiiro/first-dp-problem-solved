@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -31,11 +32,14 @@ int main(){
             }
         }
     }
+    int p[100000],d=0;
     int tong = k;
     while (tong>0)
     {
-        cout<<a[c[tong]]<<" ";
+        p[d]=a[c[tong]];
+        d++;
         tong-=a[c[tong]];
     }
-    cout<<endl;
+    for(int i=d-1;i>=0;--i)
+        cout<<p[i]<<" ";
 }
