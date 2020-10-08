@@ -40,6 +40,7 @@ int main(){
         d++;
         tong-=a[c[tong]];
     }
-    for(int i=d-1;i>=0;--i)
+    for(int i=d-1;i>=1;--i)
         cout<<p[i]<<" ";
+    cout<<p[0];
 }
